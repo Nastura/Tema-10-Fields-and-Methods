@@ -9,7 +9,7 @@ public class RadioTest {
 
     @Test   // Тест 1. Получить номер текущей радиостанции.
 
-    public void GiveMeTheCurrentRadioStation() {
+    public void giveMeTheCurrentRadioStation() {
         Radio radio = new Radio();
         int expected = 0;
         int actual = radio.getCurrentRadioStationNumber();
@@ -21,7 +21,7 @@ public class RadioTest {
 
     @Test  // Тест 2. Переключить на 8 радиостанцию
 
-    public void ChangeTheRadioStationNext() {
+    public void changeTheRadioStationNext() {
         Radio radio = new Radio();
         radio.setCurrentRadioStationNumber(8);
         int expected = 8;
@@ -44,7 +44,7 @@ public class RadioTest {
 
     @Test   // Тест 3. Переключить на 9 радиостанцию
 
-    public void ChangeTheRadioStationMAX() {
+    public void changeTheRadioStationMAX() {
         Radio radio = new Radio();
         radio.setCurrentRadioStationNumber(9);
         int expected = 9;
@@ -119,7 +119,7 @@ public class RadioTest {
 
     @Test   // Тест 1. Получить текущий уровень громкости.
 
-    public void сurrentVolumeLevel() {
+    public void currentVolumeLevel() {
         Radio radio = new Radio();
         int expected = 0;
         int actual = radio.getCurrentVolume();
@@ -204,7 +204,7 @@ public class RadioTest {
 
     @Test    // Тест. Уменьшить громкость
 
-    public void CurrentSound() {
+    public void currentSound() {
         Radio radio = new Radio();
 
         radio.decreaseVolume(50);
@@ -217,7 +217,7 @@ public class RadioTest {
 
     @Test    // Тест. Уменьшить громкость вне допустимого диапазона
 
-    public void CurrentSoundMin() {
+    public void currentSoundMin() {
         Radio radio = new Radio();
 
         radio.decreaseVolume(-1);
@@ -230,7 +230,7 @@ public class RadioTest {
 
     @Test    // Тест. Уменьшить громкость вне допустимого диапазона
 
-    public void CurrentSoundMax() {
+    public void currentSoundMax() {
         Radio radio = new Radio();
 
         radio.decreaseVolume(101);
