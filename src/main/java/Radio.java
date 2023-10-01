@@ -12,7 +12,7 @@ public class Radio {
         return currentSound;
     }
 
-    // Установка конкретного значения радиостанции
+    // Метод 1. Получить номер текущей радиостанции.
     public void setCurrentRadioStationNumber(int newStationNumber) {
         if (newStationNumber > 9) {
             newStationNumber = 0;
@@ -23,7 +23,7 @@ public class Radio {
         currentRadioStationNumber = newStationNumber;
     }
 
-// Установка конкретного значения громкости звука
+// Метод 2. Получить текущий уровень громкости.
 
     public void setSwitchSound(int newVolume) {
 
@@ -35,46 +35,51 @@ public class Radio {
 
     }
 
-    // Увеличить радиостанцию
-    public void nextStation(int Stantion) {
+    // Метод 3. Увеличить радиостанцию на 1
+    public void nextStation() {
 
-        if (Stantion >= 9) {
+        if (currentRadioStationNumber >= 9) {
             currentRadioStationNumber = 0;
-
+            return;
         }
-        if (Stantion <= 0) {
-            currentRadioStationNumber++;
+        if (currentRadioStationNumber == 0) {
+            currentRadioStationNumber = currentRadioStationNumber + 1;
         }
     }
 
-    // Уменьшить радиостанцию
-    public void prevStation(int nexStantion) {
+    // Метод 4. Уменьшить радиостанцию на 1
+    public void prevStation() {
 
-        if (nexStantion > 9 | nexStantion < 0) {
-            return;
+        if (currentRadioStationNumber >= 9) {
+            currentRadioStationNumber = currentRadioStationNumber - 1;
+
+        } else {
+            currentRadioStationNumber = currentRadioStationNumber - 1;
         }
-        currentRadioStationNumber = nexStantion - 1;
+        if (currentRadioStationNumber <= 0) {
+            currentRadioStationNumber = 9;
+        }
     }
 
-    // Увеличить громкость
+    // Метод 5. Увеличить громкость на 1 | | | |
 
-    public void increaseVolume(int newNextCurrentVolume) {
+    public void increaseVolume() {
 
-        if (newNextCurrentVolume < 0 | (newNextCurrentVolume > 100)) {
+        if (currentSound < 0 | (currentSound == 100)) {
             return;
         }
 
-        currentSound = newNextCurrentVolume + 1;
+        currentSound = currentSound + 1;
     }
 
-    // Уменьшить громкость
+    // Метод 6. Уменьшить громкость на 1 | | | |
 
-    public void decreaseVolume(int newPrevCurrentVolume) {
+    public void decreaseVolume() {
 
-        if (newPrevCurrentVolume <= 0 | newPrevCurrentVolume > 100) {
+        if (currentSound <= 0  | currentSound > 100) {
             return;
         }
-        currentSound = newPrevCurrentVolume - 1;
+        currentSound = currentSound - 1;
     }
 
 
