@@ -1,94 +1,91 @@
 public class Radio {
+    private int currentRadioStation; //значение 0 текущая радиостанция
+    private int totalRadioStations = 10; //  Всего радиостанций
+    private int firstRadioStation; // значение 0 Первая радиостанция
+    private int lastRadioStation = 9; // Последняя радиостанция
+    private int currentVolume; //значение 0  текущая громкость
+    private int minVolume; // значение 0 минимальная громксть
+    private int maxVolume = 100;
 
-
-    private int currentRadioStationNumber;  // номер текущей радиостанции
-    private int currentSound;  // номер текущей громкости
-
-    public int getCurrentRadioStationNumber() {  // метод для передачи текущей радиостанции
-        return currentRadioStationNumber;
+    public Radio() {
     }
 
-    public int getCurrentVolume() {   // метод для передачи уровня текущей громкости
-        return currentSound;
+    public Radio(int totalRadioStations) {
+        this.totalRadioStations = totalRadioStations;
+        this.lastRadioStation = this.totalRadioStations - 1;
     }
 
-    // Метод 1. Получить номер текущей радиостанции.
-    public void setCurrentRadioStationNumber(int newStationNumber) {
-        if (newStationNumber > 9) {
+
+    public int getCurrentRadioStation() {
+        return currentRadioStation;
+    }
+
+    public int getTotalRadioStations() {
+        return totalRadioStations;
+    }
+
+    public int getFirstRadioStation() {
+        return firstRadioStation;
+    }
+
+    public int getLastRadioStation() {
+        return lastRadioStation;
+    }
+
+    public void setCurrentRadioStation(int newCurrentRadioStation) { // выставляем номер станции
+        if (newCurrentRadioStation < getFirstRadioStation()) {
             return;
         }
-        if (newStationNumber < 0) {
+        if (newCurrentRadioStation > getLastRadioStation()) {
             return;
         }
-        currentRadioStationNumber = newStationNumber;
+        currentRadioStation = newCurrentRadioStation;
     }
 
-// Метод 2. Получить текущий уровень громкости.
+    public int getCurrentVolume() {
+        return currentVolume;
+    }
 
-    public void setSwitchSound(int newVolume) {
-
-        if (newVolume > 100 | newVolume < 0) {
+    public void setCurrentVolume(int newCurrentVolume) { // выставляем уровень громкости
+        if (newCurrentVolume < minVolume) {
             return;
         }
-
-        currentSound = newVolume;
-
+        if (newCurrentVolume > maxVolume) {
+            newCurrentVolume = maxVolume;
+        }
+        currentVolume = newCurrentVolume;
     }
 
-    // Метод 3. Увеличить радиостанцию на 1
-    public void nextStation() {
 
-        if (currentRadioStationNumber == 9) {
-            currentRadioStationNumber = 0;
-            return;
-        }
-        if (currentRadioStationNumber == 0) {
-            currentRadioStationNumber = currentRadioStationNumber + 1;
-
-        }
-    }
-
-    // Метод 4. Уменьшить радиостанцию на 1
-    public void prevStation() {
-
-        if (currentRadioStationNumber >= 9) {
-            currentRadioStationNumber = currentRadioStationNumber - 1;
-
+    public void nextRadioStation() { // переключаем на 1 станцию вперед
+        if (currentRadioStation == getLastRadioStation()) {
+            setCurrentRadioStation(getFirstRadioStation());
         } else {
-            currentRadioStationNumber = currentRadioStationNumber - 1;
-        }
-        if (currentRadioStationNumber <= 0) {
-            currentRadioStationNumber = 9;
+            currentRadioStation++;
         }
     }
 
-    // Метод 5. Увеличить громкость на 1 | | | |
+    public void previousRadioStation() { // переключаем на 1 станцию назад
+        if (currentRadioStation == getFirstRadioStation()) {
+            setCurrentRadioStation(getLastRadioStation());
+        } else {
+            currentRadioStation--;
+        }
+    }
 
     public void increaseVolume() {
-
-        if (currentSound == 0) {
-            currentSound = currentSound + 1;
+        if (currentVolume >= maxVolume) {
+            setCurrentVolume(maxVolume);
+        } else {
+            currentVolume++;
         }
-
-        if (currentSound == 100) {
-            return;
-        }
-
     }
 
-    // Метод 6. Уменьшить громкость на 1 | | | |
-
-    public void decreaseVolume() {
-
-        if (currentSound == 0) {
-            return;
-        }
-
-        if (currentSound == 100) {
-            currentSound = currentSound - 1;
+    public void lowerVolume() {
+        if (currentVolume <= minVolume) {
+            setCurrentVolume(minVolume);
         } else {
-            currentSound = currentSound - 1;
+            currentVolume--;
         }
-
     }
 }
