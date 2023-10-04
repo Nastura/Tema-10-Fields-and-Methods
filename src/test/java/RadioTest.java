@@ -21,7 +21,7 @@ public class RadioTest {
     }
 
     @Test
-    public void shouldSetRadioStation() { // установка станции путем нажатия кнопки
+    public void giveMeTheCurrentRadioStation() { // установка станции путем нажатия кнопки
         radio.setCurrentRadioStation(6);
 
         int expected = 6;
@@ -183,7 +183,7 @@ public class RadioTest {
     }
 
     @Test
-    public void shouldSetRadioStation10() { // установка станции путем нажатия кнопки
+    public void shouldSetRadioStation10() { //  Получить номер текущей радиостанции. ОК
         radio10.setCurrentRadioStation(6);
 
         int expected = 6;
@@ -239,7 +239,7 @@ public class RadioTest {
     }
 
     @Test
-    public void switchPreviousRadioStationIfBelowMin10() { // переключаем на 1 станцию назад, находясь на первой станции
+    public void switchPreviousRadioStationIfBelowMin10() { // Уменьшить радиостанцию с 0 на 9
         radio10.setCurrentRadioStation(0);
 
         radio10.previousRadioStation();
