@@ -15,10 +15,10 @@ public class Radio {
     // Метод 1. Получить номер текущей радиостанции.
     public void setCurrentRadioStationNumber(int newStationNumber) {
         if (newStationNumber > 9) {
-            newStationNumber = 0;
+            return;
         }
         if (newStationNumber < 0) {
-            newStationNumber = 9;
+            return;
         }
         currentRadioStationNumber = newStationNumber;
     }
@@ -38,12 +38,13 @@ public class Radio {
     // Метод 3. Увеличить радиостанцию на 1
     public void nextStation() {
 
-        if (currentRadioStationNumber >= 9) {
+        if (currentRadioStationNumber == 9) {
             currentRadioStationNumber = 0;
             return;
         }
         if (currentRadioStationNumber == 0) {
             currentRadioStationNumber = currentRadioStationNumber + 1;
+
         }
     }
 
@@ -65,22 +66,29 @@ public class Radio {
 
     public void increaseVolume() {
 
-        if (currentSound < 0 | (currentSound == 100)) {
+        if (currentSound == 0) {
+            currentSound = currentSound + 1;
+        }
+
+        if (currentSound == 100) {
             return;
         }
 
-        currentSound = currentSound + 1;
     }
 
     // Метод 6. Уменьшить громкость на 1 | | | |
 
     public void decreaseVolume() {
 
-        if (currentSound <= 0  | currentSound > 100) {
+        if (currentSound == 0) {
             return;
         }
-        currentSound = currentSound - 1;
+
+        if (currentSound == 100) {
+            currentSound = currentSound - 1;
+        } else {
+            currentSound = currentSound - 1;
+        }
+
     }
-
-
 }

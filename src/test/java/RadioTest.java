@@ -32,7 +32,7 @@ public class RadioTest {
     public void valueGreaterThanMaximum() {
         Radio radio = new Radio();
         radio.setCurrentRadioStationNumber(-1);
-        int expected = 9;
+        int expected = 0;
         int actual = radio.getCurrentRadioStationNumber();
         Assertions.assertEquals(expected, actual);
     }
@@ -42,6 +42,17 @@ public class RadioTest {
     public void increaseStation() {
         Radio radio = new Radio();
         radio.setCurrentRadioStationNumber(0);
+        radio.nextStation();
+        int expected = 1;
+        int actual = radio.getCurrentRadioStationNumber();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test   // Тест 5. М1, М3 Увеличить радиостанцию с 9 на 10 ОК
+
+    public void increaseStation2() {
+        Radio radio = new Radio();
+        radio.setCurrentRadioStationNumber(10);
         radio.nextStation();
         int expected = 1;
         int actual = radio.getCurrentRadioStationNumber();
@@ -118,7 +129,8 @@ public class RadioTest {
 
     }
 
-    @Test    // Тест. Уменьшить громкость на 1 OK / Получить текущий уровень громкости.
+
+    @Test    // Тест. Уменьшить громкость на 1 OKK / Получить текущий уровень громкости.
     public void currentSound() {
         Radio radio = new Radio();
         radio.setSwitchSound(1);
