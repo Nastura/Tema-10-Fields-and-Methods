@@ -16,7 +16,7 @@ public class RadioTest {
 
     }
 
-    @Test  // Тест. М1 Задать радиостанцию вне диапазона = - 10 OK
+    @Test  // Тест 2. М1 Задать радиостанцию вне диапазона = - 10 OK
 
     public void negativeChannel() {
         Radio radio = new Radio();
@@ -27,7 +27,7 @@ public class RadioTest {
 
     }
 
-    @Test   // Тест 4. М1 Задать радиостанцию вне диапазона = - 1 OK
+    @Test   // Тест 3. М1 Задать радиостанцию вне диапазона = - 1 OK
 
     public void valueGreaterThanMaximum() {
         Radio radio = new Radio();
@@ -37,7 +37,7 @@ public class RadioTest {
         Assertions.assertEquals(expected, actual);
     }
 
-    @Test   // Тест 5. М1, М3 Увеличить радиостанцию с 0 на 1 ОК
+    @Test   // Тест 4. М1, М3 Увеличить радиостанцию с 0 на 1 ОК
 
     public void increaseStation() {
         Radio radio = new Radio();
@@ -52,9 +52,9 @@ public class RadioTest {
 
     public void increaseStation2() {
         Radio radio = new Radio();
-        radio.setCurrentRadioStationNumber(10);
+        radio.setCurrentRadioStationNumber(9);
         radio.nextStation();
-        int expected = 1;
+        int expected = 0;
         int actual = radio.getCurrentRadioStationNumber();
         Assertions.assertEquals(expected, actual);
     }
@@ -69,7 +69,7 @@ public class RadioTest {
         Assertions.assertEquals(expected, actual);
     }
 
-    @Test  // Тест 2. М1 Переключить на 8 радиостанцию ОК
+    @Test  // Тест 7. М1 Переключить на 8 радиостанцию ОК
 
     public void changeTheRadioStationNext() {
         Radio radio = new Radio();
@@ -81,7 +81,7 @@ public class RadioTest {
     }
 
 
-    @Test   // Тест 3. М1, М3 Переключить с 9 на 10 радиостанцию ОК
+    @Test   // Тест 8. М1, М3 Переключить с 9 на 10 радиостанцию ОК
 
     public void changeTheRadioStationMAX() {
         Radio radio = new Radio();
@@ -92,7 +92,7 @@ public class RadioTest {
         Assertions.assertEquals(expected, actual);
     }
 
-    @Test   // Тест 6. Переключить с 9 на 8 радиостанцию ОК
+    @Test   // Тест 9. Переключить с 9 на 8 радиостанцию ОК
 
     public void decreaseStationMin() {
         Radio radio = new Radio();
@@ -109,7 +109,7 @@ public class RadioTest {
 
 
 
-    @Test  // Тест 2. Переключить уровень громкости на 8 OK
+    @Test  // Тест 10. Переключить уровень громкости на 8 OK
     public void switchSound() {
         Radio radio = new Radio();
         radio.setSwitchSound(8);
@@ -119,7 +119,7 @@ public class RadioTest {
 
     }
 
-    @Test    // Тест. Увеличить громкость на 1 OK
+    @Test    // Тест 11. Увеличить громкость на 1 OK
     public void nextVolume() {
         Radio radio = new Radio();
         radio.increaseVolume();
@@ -130,7 +130,7 @@ public class RadioTest {
     }
 
 
-    @Test    // Тест. Уменьшить громкость на 1 OKK / Получить текущий уровень громкости.
+    @Test    // Тест 12. Уменьшить громкость на 1 OKK / Получить текущий уровень громкости.
     public void currentSound() {
         Radio radio = new Radio();
         radio.setSwitchSound(1);
@@ -140,12 +140,9 @@ public class RadioTest {
         Assertions.assertEquals(expected, actual);
 
     }
+    
 
-
-    // НЕГАТИВНЫЕ ТЕСТЫ
-
-
-    @Test  // Тест. Переключить уровень громкости на 101 OK
+    @Test  // Тест 13. Переключить уровень громкости на 101 OK
     public void switchSoundMax() {
         Radio radio = new Radio();
         radio.setSwitchSound(100);
@@ -156,7 +153,7 @@ public class RadioTest {
 
     }
 
-    @Test  // Тест. Переключить уровень громкости на -1 OK
+    @Test  // Тест 14. Переключить уровень громкости на -1 OK
     public void switchSoundMin() {
         Radio radio = new Radio();
         radio.setSwitchSound(0);
@@ -167,7 +164,7 @@ public class RadioTest {
 
     }
 
-    @Test  // Тест. Уменьшить громкость на 1 от 100
+    @Test  // Тест 15. Уменьшить громкость на 1 от 100
     public void switchSoundMinn() {
         Radio radio = new Radio();
         radio.setSwitchSound(100);
@@ -178,7 +175,7 @@ public class RadioTest {
 
     }
 
-    @Test    // Тест. Получить громкость 101
+    @Test    // Тест 16. Получить громкость 101
 
     public void nextVolumeMax() {
         Radio radio = new Radio();
@@ -189,7 +186,7 @@ public class RadioTest {
 
     }
 
-    @Test    // Тест. Получить громкость -1
+    @Test    // Тест 17. Получить громкость -1
 
     public void nextVolumeMin() {
         Radio radio = new Radio();
