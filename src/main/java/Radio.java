@@ -1,77 +1,77 @@
 public class Radio {
 
 
-    private int currentRadioStationNumber;  // номер текущей радиостанции
-    private int currentSound;  // номер текущей громкости
+    private int currentRadioStation;  // номер текущей радиостанции
+    private int currentVolume;  // номер текущей громкости
 
-    public int getCurrentRadioStationNumber() {  // метод для передачи текущей радиостанции
-        return currentRadioStationNumber;
+    public int getCurrentRadioStation() {  // метод для передачи текущей радиостанции
+        return currentRadioStation;
     }
 
     public int getCurrentVolume() {   // метод для передачи уровня текущей громкости
-        return currentSound;
+        return currentVolume;
     }
 
     // Метод 1. Получить номер текущей радиостанции.
-    public void setCurrentRadioStationNumber(int newStationNumber) {
-        if (newStationNumber > 9) {
+    public void setCurrentRadioStation(int newCurrentRadioStation) {
+        if (newCurrentRadioStation > 9) {
             return;
         }
-        if (newStationNumber < 0) {
+        if (newCurrentRadioStation < 0) {
             return;
         }
-        currentRadioStationNumber = newStationNumber;
+        currentRadioStation = newCurrentRadioStation;
     }
 
 // Метод 2. Получить текущий уровень громкости.
 
-    public void setSwitchSound(int newVolume) {
+    public void setSwitchSound(int newCurrentVolume) {
 
-        if (newVolume > 100 | newVolume < 0) {
+        if (newCurrentVolume < 0) {
             return;
         }
 
-        currentSound = newVolume;
+        if (newCurrentVolume > 100) {
+            newCurrentVolume = 100;
+        }
+
+        currentVolume = newCurrentVolume;
 
     }
 
     // Метод 3. Увеличить радиостанцию на 1
-    public void nextStation() {
+    public void nextRadioStation() {
 
-        if (currentRadioStationNumber == 9) {
-            currentRadioStationNumber = 0;
-            return;
-        }
-        if (currentRadioStationNumber == 0) {
-            currentRadioStationNumber = currentRadioStationNumber + 1;
+        if (currentRadioStation == 9) {
+            setCurrentRadioStation(0);
+
+        } else {
+            currentRadioStation++;
 
         }
     }
 
     // Метод 4. Уменьшить радиостанцию на 1
-    public void prevStation() {
+    public void previousRadioStation() {
 
-        if (currentRadioStationNumber >= 9) {
-            currentRadioStationNumber = currentRadioStationNumber - 1;
+        if (currentRadioStation == 0) {
+            setCurrentRadioStation(9);
 
         } else {
-            currentRadioStationNumber = currentRadioStationNumber - 1;
+            currentRadioStation--;
         }
-        if (currentRadioStationNumber <= 0) {
-            currentRadioStationNumber = 9;
-        }
+
     }
 
     // Метод 5. Увеличить громкость на 1 | | | |
 
     public void increaseVolume() {
 
-        if (currentSound == 0) {
-            currentSound = currentSound + 1;
-        }
 
-        if (currentSound == 100) {
-            return;
+        if (currentVolume >= 100) {
+            setSwitchSound(100);
+        } else {
+            currentVolume++;
         }
 
     }
@@ -80,14 +80,11 @@ public class Radio {
 
     public void decreaseVolume() {
 
-        if (currentSound == 0) {
-            return;
-        }
 
-        if (currentSound == 100) {
-            currentSound = currentSound - 1;
+        if (currentVolume <= 0) {
+            setSwitchSound(0);
         } else {
-            currentSound = currentSound - 1;
+            currentVolume--;
         }
 
     }
